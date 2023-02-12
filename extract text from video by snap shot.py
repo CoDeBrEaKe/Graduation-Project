@@ -1,35 +1,4 @@
-[7:01 PM, 2/12/2023] Habeba Adnan 🌸🌸: import cv2
-import numpy as np
-import matplotlib.pyplot as plt
-import pytesseract
-import pyttsx3 
-from gtts import gTTS
-
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-tessdata_dir_config = r'--tessdata-dir "C:\Program Files\Tesseract-OCR\tessdata"'
-
-img=cv2.imread("book.png")
-img=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
-
-h,w,c = img.shape
-if w > 100:
-    new_w=1000
-    ar=w/h
-    new_h=int(new_w/ar)
-    img=cv2.resize(img,(new_w,new_h),interpolation=cv2.INTER_AREA)
-
-plt.imshow(img)
-
-def threshoding(image):
-    img_gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    ret,thres=cv2.threshold(img_gray,80,225,cv2.THRESH_BINARY_INV)
-    plt.imshow(thres,cmap="gray")
-    return thres
-
-thres_img=threshoding(img)   
-kernal=np.ones((3,85)…
-[7:02 PM, 2/12/2023] Habeba Adnan 🌸🌸: line detection
-[7:02 PM, 2/12/2023] Habeba Adnan 🌸🌸: import sys
+import sys
 from os import path
 
 import cv2
